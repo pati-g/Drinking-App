@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="Home page" name="description"/>
+    <meta content="Patrycja Galant" name="author"/>
+    <title>Drinking app</title>
+    <link rel="icon" th:href="@{../static/favicon.ico}" type="image/ico"/>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+          integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" rel="stylesheet">
+    <style>
+    body {
+        background-color: #ADD8E6;
+    }
+    </style>
+</head>
+<body class="container-fluid">
+<h1 class="text-center">Drinking app</h1>
+<br>
+<h3>Welcome! This application has been designed to simulate the act of drinking. You can choose which character
+    will be drinking and how much liquid can it store. Then, you can choose one of the vessels available, set its
+    capacity (how much liquid does it have) and make your character drink it. Have fun!</h3>
+<br><br>
+<div class="col-3">
+<h4>First, choose your character: </h4>
+<form method="post" th:action="@{/create}" th:object="${character}">
+<select aria-label="Select character from list" class="form-select" name="character" required>
+    <option disabled selected>Choose from the list</option>
+    <option th:each="character:${allCharacters}" th:text="${character}"
+            th:value="${characterType}">Character type (human/cat)</option>
+</select>
+    <br>
+    <span>How much liquid will fit into your character's stomach?</span>
+    <div class="input-group">
+        <input type="text" class="form-control" aria-label="Text input for stomach capacity" placeholder="e.g. 2,5"
+        required>
+        <select aria-label="Select measurement unit from list" name="unit" required>
+            <option disabled selected>Unit</option>
+            <option value="ml">ml</option>
+            <option value="l">l</option>
+            <option value="oz">oz</option>
+        </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success">Create a character!</button>
+</form>
+</div>
+
+<footer class="mt-auto py-5">
+    <div class="container px-5"><p class="m-0 text-center text-dark">Copyright &copy; Patrycja Galant 2022</p></div>
+</footer><script crossorigin="anonymous"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

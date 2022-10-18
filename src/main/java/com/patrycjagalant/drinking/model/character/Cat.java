@@ -5,7 +5,7 @@ import lombok.ToString;
 @ToString
 public class Cat extends Character {
 
-    protected Cat(double stomachCapacity) {
+    public Cat(double stomachCapacity) {
         super(stomachCapacity);
     }
 

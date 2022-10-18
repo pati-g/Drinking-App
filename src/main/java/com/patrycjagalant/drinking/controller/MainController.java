@@ -25,13 +25,12 @@ public class MainController {
     public static final String REDIRECT_HOME = "redirect:/";
     public static final String KIND = "kind";
     public static final String REDIRECT_CHARACTER = "redirect:/character";
-    private final CharacterFactory characterFactory;
-    private final CharacterConverter characterConverter;
-
-    private final VesselFactory vesselFactory;
-    private final DrinkingService drinkingService;
     private static final String CHARACTER = "character";
     private static final String ERROR = "error";
+    private final CharacterFactory characterFactory;
+    private final CharacterConverter characterConverter;
+    private final VesselFactory vesselFactory;
+    private final DrinkingService drinkingService;
 
     @GetMapping("/")
     public String viewMainPage(Model model) {
@@ -47,7 +46,8 @@ public class MainController {
     }
 
     @PostMapping("/create")
-    public String createCharacter(@ModelAttribute("character")CharacterDto characterDto, RedirectAttributes redirectAttributes) {
+    public String createCharacter(@ModelAttribute("character") CharacterDto characterDto,
+                                  RedirectAttributes redirectAttributes) {
         String type = characterDto.getCharacterType();
         double capacity = characterDto.getStomachCapacity();
         if (Arrays.stream(CharacterType.values()).noneMatch(t -> t.name().equalsIgnoreCase(type))) {
@@ -66,8 +66,8 @@ public class MainController {
     }
 
     @PostMapping("/drink")
-    public String performDrinking(@ModelAttribute("vessel")VesselDto vesselDto,
-                                  @ModelAttribute("character")CharacterDto characterDto,
+    public String performDrinking(@ModelAttribute("vessel") VesselDto vesselDto,
+                                  @ModelAttribute("character") CharacterDto characterDto,
                                   RedirectAttributes redirectAttributes) {
         String type = vesselDto.getType();
         double capacity = vesselDto.getCapacity();

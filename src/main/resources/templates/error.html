@@ -14,25 +14,27 @@
     body {
         background-color: #ADD8E6;
     }
+
     </style>
 </head>
 <body class="container-fluid">
 <h1 class="text-center">Something went wrong...</h1>
 <br>
 <div class="col-3 mx-auto">
-<ul class="list-group">
-    <li class="list-group-item list-group-item-danger"><h3 th:text="${error}">Status</h3></li>
-    <li class="list-group-item" th:text="${'Status code: ' + status}"></li>
-</ul>
-<br><br>
-<p><a class="btn btn-primary" href="/" th:href="@{/}">Back to home page</a></p>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-danger"><h3 th:text="${error}">Status</h3></li>
+        <li class="list-group-item" th:text="${'Status code: ' + status}"></li>
+    </ul>
+    <br><br>
+    <p><a class="btn btn-primary" href="/" th:href="@{/}">Back to home page</a></p>
 </div>
 
 <footer class="mt-auto py-5">
     <div class="container px-5"><p class="m-0 text-center text-dark">Copyright &copy; Patrycja Galant 2022</p></div>
-</footer><script crossorigin="anonymous"
-                 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</footer>
+<script crossorigin="anonymous"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

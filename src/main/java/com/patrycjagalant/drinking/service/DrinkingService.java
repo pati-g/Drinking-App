@@ -14,8 +14,7 @@ public class DrinkingService {
         double capacityAfterDrinking = character.getStomachCapacity() - vesselVolume;
         if (capacityAfterDrinking >= 0) {
             character.setStomachCapacity(capacityAfterDrinking);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("The character can't fit that amount of liquid!");
         }
     }

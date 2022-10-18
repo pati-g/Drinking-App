@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class CharacterConverter {
 
     private final CharacterFactory characterFactory;
+
     public CharacterDto convertToDto(Character character) {
         return new CharacterDto(character.getClass().getSimpleName(), character.getStomachCapacity());
     }

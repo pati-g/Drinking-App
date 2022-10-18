@@ -10,6 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CharacterDto {
-    private String type;
-    private Double capacity;
+    private String characterType;
+    private Double stomachCapacity;
 }

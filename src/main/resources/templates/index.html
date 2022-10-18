@@ -19,22 +19,26 @@
 <body class="container-fluid">
 <h1 class="text-center">Drinking app</h1>
 <br>
+<div class="col-5 mx-auto text-center">
+    <p th:if="${info!=null}" class="alert alert-success" th:text="${info}">Info message</p>
+</div>
 <h3>Welcome! This application has been designed to simulate the act of drinking. You can choose which character
     will be drinking and how much liquid can it store. Then, you can choose one of the vessels available, set its
     capacity (how much liquid does it have) and make your character drink it. Have fun!</h3>
 <br><br>
-<div class="col-3">
+<div class="col-3 mx-auto">
+    <p th:if="${error!=null}" class="error alert alert-danger" th:text="${error}">Error message</p>
 <h4>First, choose your character: </h4>
 <form method="post" th:action="@{/create}" th:object="${character}">
-<select aria-label="Select character from list" class="form-select" name="character" th:field="*{type}" required>
+<select aria-label="Select character from list" class="form-select" name="character" th:field="*{characterType}" required>
     <option th:each="enum:${allCharacters}" th:text="${enum.name().toLowerCase}"
             th:value="${enum}">Character type (human/cat)</option>
 </select>
     <br>
     <span>How much liquid will fit into your character's stomach?</span>
     <div class="input-group">
-        <input type="text" class="form-control" aria-label="Text input for stomach capacity" placeholder="e.g. 2,5"
-               th:field="*{capacity}" required>
+        <input type="text" class="form-control" aria-label="Text input for stomach capacity" placeholder="e.g. 2.5"
+               th:field="*{stomachCapacity}" required>
         <span class="input-group-text" id="basic-addon3">litres</span>
     </div>
     <br>

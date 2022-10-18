@@ -19,31 +19,40 @@
 <body class="container-fluid">
 <h1 class="text-center">Drinking app</h1>
 <br>
+<div class="mx-auto">
 <h3>Here's your character :)</h3>
 <br>
-<img class="pt-4 img-fluid" th:src="@{${'/' + type + '.png'}}" width="400"/>
+<img class="pt-4 img-fluid" th:src="@{${'/' + kind + '.png'}}" width="400"/>
 <span>I can still fit <span class="text-bold" th:text="${character.getStomachCapacity()}"></span> litres of liquid in my belly!</span>
 <h5>Time to give it some fluids to drink. Choose the vessel and how much fluid it will contain
     and let your character drink.</h5>
+</div>
 <br><br>
-<div class="col-3">
+<div class="col-3 mx-auto">
+    <p th:if="${error!=null}" class="error alert alert-danger" th:text="${error}">Error message</p>
     <span>Choose the vessel:</span>
     <form method="post" th:action="@{/drink}" th:object="${vessel}">
-        <select aria-label="Select the vessel from list" class="form-select" id="vessel" th:field="*{type}" required>
-            <option th:each="enum:${allCharacters}" th:text="${enum.name().toLowerCase}"
-                    th:value="${enum}">Character type (human/cat)</option>
+        <select aria-label="Select the vessel from list" class="form-select" id="vessel" th:field="${vessel.type}" required>
+            <option th:each="enum:${allVessels}" th:text="${enum.name().toLowerCase}"
+                    th:value="${enum}">Vessel type (bottle/bowl)</option>
         </select>
         <br>
-        <span>How much liquid will fit into your character's stomach?</span>
+        <span>How much liquid will the vessel have?</span>
         <div class="input-group">
-            <input type="text" class="form-control" aria-label="Text input for stomach capacity" placeholder="e.g. 2,5"
-                   th:field="*{capacity}" required>
+            <input type="text" class="form-control" aria-label="Text input for vessel capacity" placeholder="e.g. 2.5"
+                   th:field="${vessel.capacity}" required>
             <span class="input-group-text" id="basic-addon3">litres</span>
         </div>
         <br>
+        <div th:object="${character}">
+            <input type="hidden" th:field="*{stomachCapacity}"/>
+            <input type="hidden" th:field="*{characterType}"/>
+            <input type="hidden" th:value="${type}"/>
+        </div>
         <button type="submit" class="btn btn-primary">Drink!</button>
     </form>
 </div>
+
 
 <footer class="mt-auto py-5">
     <div class="container px-5"><p class="m-0 text-center text-dark">Copyright &copy; Patrycja Galant 2022</p></div>

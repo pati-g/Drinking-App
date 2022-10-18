@@ -11,5 +11,5 @@ import lombok.Setter;
 @Setter
 public class VesselDto {
     private String type;
-    private double capacity;
+    private Double capacity;
 }

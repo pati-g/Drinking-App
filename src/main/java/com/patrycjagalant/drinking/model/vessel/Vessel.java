@@ -1,4 +1,4 @@
-package com.patrycjagalant.drinking.model;
+package com.patrycjagalant.drinking.model.vessel;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
